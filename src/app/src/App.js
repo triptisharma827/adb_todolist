@@ -1,27 +1,55 @@
-import './App.css';
-import logo from './logo.svg';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import TodoList from "./components/todolist";
+import TodoForm from "./components/todoform";
 
+function App() {
+  const [todos, setTodos] = useState([]);
 
-export function App() {
+  const fetchTodos = () => {
+    fetch("http://localhost:8000/todos/") 
+      .then((response) => response.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setTodos(data);
+        } else {
+          
+          setTodos(["Learn Docker", "Learn React"]); // Set hardcoded todos
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+
+  useEffect(() => {
+    // Fetch initial todos
+    fetchTodos();
+  }, []);
+
+  const handleAddTodo = (newTodo) => {
+    fetch("http://localhost:8000/todos/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ todo: newTodo })
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // After a successful POST request, fetch the updated todos
+        fetchTodos();
+        console.log("Todo added:", data);
+      })
+      .catch((error) => {
+        console.error("Error adding todo:", error);
+      });
+  };
+
   return (
     <div className="App">
-      <div>
-        <h1>List of TODOs</h1>
-        <li>Learn Docker</li>
-        <li>Learn React</li>
-      </div>
-      <div>
-        <h1>Create a ToDo</h1>
-        <form>
-          <div>
-            <label for="todo">ToDo: </label>
-            <input type="text" />
-          </div>
-          <div style={{"marginTop": "5px"}}>
-            <button>Add ToDo!</button>
-          </div>
-        </form>
-      </div>
+      <TodoList todos={todos} />
+      <TodoForm onAddTodo={handleAddTodo} />
     </div>
   );
 }

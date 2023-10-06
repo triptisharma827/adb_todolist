@@ -1,38 +1,104 @@
-.App {
+body {
+  background-color: #f2f2f2;
+}
+
+/* TodoList.css */
+.todo-list-container {
+  background-color: #f2f2f2; 
+
+  padding: 20px;
+  max-height: 400px;
+  overflow: scroll;
+  overflow-x: hidden;
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); */
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.todo-list-title {
+  font-size: 44px;
+  color: #333; 
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.todo-list {
+  list-style-type: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.todo-item {
+  background-color: #fff; 
+  padding: 20px;
+  border-radius: 10px;
+  flex-basis: calc(33.33% - 10px);
+  text-align: center;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo-item:hover {
+  background-color: #ddd; 
+}
+
+.todo-color-0 {
+  background-color: #ffcccb;
+}
+
+.todo-color-1 {
+  background-color: #b5e7a0;
+}
+
+.todo-color-2 {
+  background-color: #a0b5e7;
+}
+
+.todo-color-3 {
+  background-color: #e7a0b5;
+}
+/* TodoForm.css */
+.todo-form-container {
+  background-color: #f2f2f2; 
+
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.todo-form-title {
+  font-size: 44px;
+  color: #333;
+  margin-bottom: 20px;
+}
+.todo-input-title {
+  font-size: 24px;
+}
+.todo-input {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.todo-button {
+  background-color: #1aacac; 
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.todo-button:hover {
+  background-color: #2e97a7; 
+}
+.todo-item.completed {
+  background-color: #ccc; 
+  color: #777; 
+  text-decoration: line-through; 
 }
