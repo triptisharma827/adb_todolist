@@ -24,3 +24,6 @@ The TODO list application built for this assignment includes the following featu
 - Mark Tasks as Completed: Users can mark tasks as completed by interacting with the UI. Completed tasks should be visually differentiated from active tasks.
 
 - Refresh Task List: When a new task is added, the TODO list should refresh automatically to fetch the latest data from MongoDB.
+
+
+![image](https://github.com/triptisharma827/adb_todolist/assets/71861450/fe3a18ac-f2f0-4c9d-a0f3-05d6acb53848)
